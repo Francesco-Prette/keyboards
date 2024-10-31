@@ -1,0 +1,31 @@
+#ifdef OLED_ENABLE
+    #define OLED_DIPLAY_128X64
+#endif
+
+#ifdef POINTING_DEVICE_ENABLE
+    #define ANALOG_JOYSTICK_X_AXIS_PIN F5
+    #define ANALOG_JOYSTICK_Y_AXIS_PIN F4
+    #define ANALOG_JOYSTICK_AXIS_MIN 0
+    #define ANALOG_JOYSTICK_AXIS_MAX 1023
+    #define ANALOG_JOYSTICK_SPEED_REGULATOR 40
+    #define ANALOG_JOYSTICK_SPEED_MAX 2
+    #define ANALOG_JOYSTICK_READ_INTERVAL 10
+#endif
+
+#ifdef JOYSTICK_ENABLE
+    // Min 0, max 32
+    //#define JOYSTICK_BUTTON_COUNT 1
+    // Min 0, max 6: X, Y, Z, Rx, Ry, Rz
+    //#define JOYSTICK_AXIS_COUNT 3
+    // Min 8, max 16
+    //#define JOYSTICK_AXIS_RESOLUTION 8
+    #define JOYSTICK_X_AXIS_PIN F5
+    #define JOYSTICK_Y_AXIS_PIN F4
+    //#define ANALOG_JOYSTICK_AXIS_MIN 0
+    //#define ANALOG_JOYSTICK_AXIS_MAX 1023
+#endif
+
+#ifdef TAP_DANCER_ENABLE
+    #define TAPPING_TERM 175
+    #define TAPPING_TERM_PER_KEY
+#endif
