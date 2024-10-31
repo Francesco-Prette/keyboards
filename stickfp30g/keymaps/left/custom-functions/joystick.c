@@ -66,8 +66,30 @@
             }
         }
     }
+
+    // Initialize joystick button state
+    bool joystick_button_pressed = false;
+
+    void button_press(void) {
+        // Check if the joystick button is pressed
+        if (!readPin(JOYSTICK_BUTTON_PIN)) {
+            if (!joystick_button_pressed) {
+                joystick_button_pressed = true;
+                // Register the key you want to assign to the joystick button
+                register_code(QK_MOUSE_BUTTON_3);
+            }
+        } else {
+            if (joystick_button_pressed) {
+                joystick_button_pressed = false;
+                // Unregister the key when joystick button is released
+                unregister_code(QK_MOUSE_BUTTON_3);
+            }
+        }
+    }
+
     // In your matrix_scan_user function, you can add the joystick processing
     void matrix_scan_user(void) {
         process_joystick_input();  // Call the function to handle joystick input
+        button_press();
     }
 #endif
