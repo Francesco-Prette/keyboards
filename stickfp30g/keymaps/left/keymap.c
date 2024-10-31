@@ -6,6 +6,8 @@
 //#include "joystick.h"
 //#include "mousekey.h"
 //#include "print.h"
+#include "custom-functions/joystick.c"
+#include "custom-functions/oled.c"
 #define default 0
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
