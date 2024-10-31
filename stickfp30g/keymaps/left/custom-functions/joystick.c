@@ -7,62 +7,62 @@
     JOYSTICK_AXIS_IN(F4, 0, 512, 1023)
     };
      // Track the state of the joystick movement
-    static bool w_pressed = false;
-    static bool s_pressed = false;
-    static bool a_pressed = false;
-    static bool d_pressed = false;
+    static bool down_pressed = false;
+    static bool up_pressed = false;
+    static bool right_pressed = false;
+    static bool left_pressed = false;
     void process_joystick_input(void) {
         // Read joystick axis values
         int16_t x_axis = joystick_read_axis(0);  // 0 for X-axis
         int16_t y_axis = joystick_read_axis(1);  // 1 for Y-axis
         // Print the joystick values
         uprintf("Joystick X: %d, Y: %d\n", x_axis, y_axis);
-        // Handle Forward (W)
+        // Handle Forward (UP)
         if (y_axis > JOYSTICK_DEADZONE) {
-            if (!w_pressed) {  // If W is not pressed, press it
+            if (!down_pressed) {  // If DOWN is not pressed, press it
                 register_code(KC_DOWN);
-                w_pressed = true;  // Mark W as pressed
+                down_pressed = true;  // Mark DOWN as pressed
             }
         } else {
-            if (w_pressed) {  // If W is pressed, release it when moving back into deadzone
+            if (down_pressed) {  // If DOWN is pressed, release it when moving back into deadzone
                 unregister_code(KC_DOWN);
-                w_pressed = false;  // Mark W as released
+                down_pressed = false;  // Mark DOWN as released
             }
         }
         // Handle Backward (S)
         if (y_axis < -JOYSTICK_DEADZONE) {
-            if (!s_pressed) {  // If S is not pressed, press it
+            if (!up_pressed) {  // If UP is not pressed, press it
                 register_code(KC_UP);
-                s_pressed = true;  // Mark S as pressed
+                up_pressed = true;  // Mark UP as pressed
             }
         } else {
-            if (s_pressed) {  // If S is pressed, release it when moving back into deadzone
+            if (up_pressed) {  // If UP is pressed, release it when moving back into deadzone
                 unregister_code(KC_UP);
-                s_pressed = false;  // Mark S as released
+                up_pressed = false;  // Mark UP as released
             }
         }
         // Handle Right (D)
         if (x_axis > JOYSTICK_DEADZONE) {
-            if (!d_pressed) {  // If D is not pressed, press it
+            if (!left_pressed) {  // If LEFT is not pressed, press it
                 register_code(KC_LEFT);
-                d_pressed = true;  // Mark D as pressed
+                left_pressed = true;  // Mark LEFT as pressed
             }
         } else {
-            if (d_pressed) {  // If D is pressed, release it when moving back into deadzone
+            if (left_pressed) {  // If LEFT is pressed, release it when moving back into deadzone
                 unregister_code(KC_LEFT);
-                d_pressed = false;  // Mark D as released
+                left_pressed = false;  // Mark LEFT as released
             }
         }
         // Handle Left (A)
         if (x_axis < -JOYSTICK_DEADZONE) {
-            if (!a_pressed) {  // If A is not pressed, press it
+            if (!right_pressed) {  // If RIGHT is not pressed, press it
                 register_code(KC_RGHT);
-                a_pressed = true;  // Mark A as pressed
+                right_pressed = true;  // Mark RIGHT as pressed
             }
         } else {
-            if (a_pressed) {  // If A is pressed, release it when moving back into deadzone
+            if (right_pressed) {  // If RIGHT is pressed, release it when moving back into deadzone
                 unregister_code(KC_RGHT);
-                a_pressed = false;  // Mark A as released
+                right_pressed = false;  // Mark RIGHT as released
             }
         }
     }
