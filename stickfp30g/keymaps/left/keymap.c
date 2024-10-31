@@ -48,63 +48,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TO(2),   KC_A,    KC_S,          KC_D,    KC_F,    KC_G,
         KC_LEFT_SHIFT,  KC_Z,    KC_X,          KC_C,    KC_V,    KC_B,
         KC_LEFT_CTRL,   KC_LWIN, KC_LEFT_ALT,   KC_NO,   KC_NUM
-    ),
-    /*
-     * ┌───┬───┬───┬───┬───┬───┐
-     * │ESC│ 1 │ 2 │ 3 │ 4 │ 5 │
-     * ├───┼───┼───┼───┼───┼───┤
-     * │ q │ w │ e │ r │ t │ g │
-     * ├───┼───┼───┼───┼───┼───┤
-     * │ h │ y │ u │ i │ o │ p │
-     * ├───┼───┼───┼───┼───┼───┤
-     * │SHI│ a │ s │ d │ f │ c │
-     * ├───┼───┼───┼───┼───┼───┘
-     * │CTL│Win│ALT│FN2│SPA│
-     * └───┴───┴───┴───┴───┘
-     */
-    [2] = LAYOUT_tel(
-        KC_ESC,         KC_1,   KC_2,   KC_3,    KC_4,    KC_5,
-        KC_Q,           KC_W,   KC_E,   KC_R,    KC_T,    KC_G,
-        KC_H,           KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,
-        KC_LEFT_SHIFT,  KC_A,   KC_S,   KC_D,    KC_F,    KC_C,
-        KC_LEFT_CTRL,   KC_LWIN, KC_LEFT_ALT,   TO(0),   KC_SPACE
     )
 };
-
-#ifdef OLED_ENABLE
-    // RENDER QMK
-    //static void render_logo(void) {
-    //    static const char PROGMEM qmk_logo[] = {
-    //        0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8A, 0x8B, 0x8C, 0x8D, 0x8E, 0x8F, 0x90, 0x91, 0x92, 0x93, 0x94,
-    //        0xA0, 0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6, 0xA7, 0xA8, 0xA9, 0xAA, 0xAB, 0xAC, 0xAD, 0xAE, 0xAF, 0xB0, 0xB1, 0xB2, 0xB3, 0xB4,
-    //        0xC0, 0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0xC6, 0xC7, 0xC8, 0xC9, 0xCA, 0xCB, 0xCC, 0xCD, 0xCE, 0xCF, 0xD0, 0xD1, 0xD2, 0xD3, 0xD4, 0x00
-    //    };
-    //    oled_write_P(qmk_logo, false);
-    //}
-
-    enum layer_names {
-        _L_DEFAULT,
-        _L_1,
-        _L_TEL
-    };
-
-    bool oled_task_user(void) {
-        // RENDER QMK
-        //render_logo();
-        switch (get_highest_layer(layer_state)){
-            case _L_DEFAULT:
-                oled_write_ln("Default", false);
-                break;
-            case _L_1:
-                oled_write_ln("Layer 1", false);
-                break;
-            case _L_TEL:
-                oled_write_ln("Throne and Liberty", false);
-                break;
-        }
-        return false;
-    }
-#endif
 
 #ifdef JOYSTICK_ENABLE
     // Joystick dead zone threshold (adjust as necessary)
